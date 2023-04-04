@@ -2,7 +2,10 @@ import 'dart:async';
 // import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search_app/screens/home_screen.dart';
+
+import 'logic/cubit/search_result_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +16,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
+    return BlocProvider(
+      create: (context) => SearchResultCubit(),
+      child: const MaterialApp(
+        home: MyHomePage(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
